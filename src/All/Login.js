@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import styles from'./Login.css'
-import Button from '@mui/material/Button';
+import { useHistory } from 'react-router-dom';
 import backgroundImage from './Assets/image1.jpg';
+import Feed from './Feed';
 
 const backgroundStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -20,6 +20,7 @@ const backgroundStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    marginLeft: '5%'
   };
   
   const labelStyle = {
@@ -62,6 +63,8 @@ function Login(props) {
     password: '',
   });
   
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+
   const handleRegisterClick=()=>{
     props.setIsRegister(true);
     props.setIsLogin(false);
@@ -73,43 +76,48 @@ function Login(props) {
       setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
     }
     
-  
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(inputs);
+    setIsLoggedIn(true);
   }
 
   return (
-    <div style={backgroundStyle}>
-      <form onSubmit={handleSubmit} style={formStyle}>
-        <label style={labelStyle}>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={inputs.email || ''}
-          onChange={handleChange}
-          style={inputStyle}
-        />
+      <>
+      {isLoggedIn ? <Feed />:
+        <div style={backgroundStyle}>
+          <form onSubmit={handleSubmit} style={formStyle}>
+          <label style={labelStyle}>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={inputs.email || ''}
+            onChange={handleChange}
+            placeholder="email address..."
+            style={inputStyle}
+          />
 
-        <label style={labelStyle}>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={inputs.password || ''}
-          onChange={handleChange}
-          style={inputStyle}
-        />
+          <label style={labelStyle}>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={inputs.password || ''}
+            placeholder="password..."
+            onChange={handleChange}
+            style={inputStyle}
+          />
 
-        <input
-          type="submit"
-          value="Login"
-          style={{ ...submitButtonStyle, ...submitButtonHoverStyle }}
-        />
-        <h3>Don't have an account</h3>
-        <button onClick={handleRegisterClick}>Register</button>
-      </form>
-    </div>
+          <input
+            type="submit"
+            value="Login"
+            style={{ ...submitButtonStyle, ...submitButtonHoverStyle }}
+          />
+          <h3>Don't have an account</h3>
+          <button onClick={handleRegisterClick}>Register</button>
+        </form>
+      </div>
+    }
+      </>
   )
 }
 

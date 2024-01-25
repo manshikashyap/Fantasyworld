@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import styles from './App.css';
-import backgroundImage from './Assets/image3.jpg';
+import backgroundImage from './Assets/image2.jpg';
 import Login from './Login';
-import RegisterPage from './RegisterPage';
-
+import Register from './Register'
 
 function App() {
 
@@ -13,7 +12,7 @@ function App() {
   const backgroundStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover', 
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: 'repeat',
     backgroundPosition: 'center center',
     height: '100vh',  
     width: '100vw',  
@@ -47,7 +46,7 @@ function App() {
       }
       
       {isLogin && <Login isLogin={isLogin} isRegister={isRegister} setIsLogin={setIsLogin} setIsRegister={setIsRegister} />}
-      {isRegister && <RegisterPage isLogin={isLogin} isRegister={isRegister} setIsLogin={setIsLogin} setIsRegister={setIsRegister} />}
+      {isRegister && <Register isLogin={isLogin} isRegister={isRegister} setIsLogin={setIsLogin} setIsRegister={setIsRegister} />}
       
     </div>
   );

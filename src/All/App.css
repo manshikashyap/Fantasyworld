@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 button {
-  background-color:rgb(168, 125, 207);
+  background-color:rgb(173, 136, 211);
   color: rgb(138, 22, 153);
-  border: none;
-  size: 2px;
+  border: rgb(95, 14, 105);
+  border-radius: 4px;
+  size: 4px;
+  padding: 2px;
+
 }
 
 button:hover {
@@ -44,7 +47,7 @@ h2 {
   margin-left:5%;
   margin-right:5%;
   padding: 2px;
-  font-size: 25px;
+  font-size: 22px;
   font-family: "Montserrat Medium";
   max-width: 100%;
   text-align: center;
